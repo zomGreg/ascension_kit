@@ -3,7 +3,6 @@ import requests
 import sys, os
 import bs4
 import collections
-import charts
 from sets import Set
 import utils
 
