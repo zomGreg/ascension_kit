@@ -4,6 +4,7 @@ import argparse
 if __name__ == '__main__':
     # TODO make saving the file optional
     # TODO if the file is saved, "cache" it by testing ctime
+    # TODO make a pretty table
     """ Fetches a users NAO data"""
     parser = argparse.ArgumentParser()
     parser.add_argument('--name', '-n', help='NAO username')
