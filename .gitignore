@@ -1,0 +1,14 @@
+*.pyc
+*.swp
+.coverage
+.idea
+*.iml
+pylint.log
+run.py
+*.egg-info
+build/
+dist/
+docs/_build/
+_ghpages/
+mixcoatl.sublime-*
+.DS_Store

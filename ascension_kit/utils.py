@@ -1,14 +1,16 @@
 import datetime
 
-def seconds_to_days_hours_mins(seconds):
 
+def seconds_to_days_hours_mins(seconds):
     days = seconds / 86400
     hours = (seconds % 86400) / 3600
     minutes = ((seconds % 86400) % 3600) / 60
 
     return days, hours, minutes
 
-lookup_z = [round(1/float(n),5) for n in range(1, 100)]
+
+lookup_z = [round(1 / float(n), 5) for n in range(1, 100)]
+
 
 def timestamp_to_date(unix_timestamp):
     '''
