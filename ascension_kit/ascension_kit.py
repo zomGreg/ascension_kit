@@ -1,5 +1,6 @@
 import nao, format
 import argparse
+import sys
 
 if __name__ == '__main__':
     # TODO make saving the file optional

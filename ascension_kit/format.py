@@ -10,10 +10,10 @@ def process_ascensions(ascension_list, total_games):
     align0 = [str(g['align0']) for g in ascension_list]
     align = [str(g['align']) for g in ascension_list]
     points = [int(g['points']) for g in ascension_list]
-    turns = [int(g['turns']) for g in ascension_list]
+    turns = [int(g['turns']) if g['turns'] else 0 for g in ascension_list]
     dates = [str(g['deathdate']) for g in ascension_list]
     maxlvl = [int(g['maxlvl']) for g in ascension_list]
-    realtime = [int(g['realtime']) for g in ascension_list]
+    realtime = [int(g['realtime']) if g['realtime'] else 0 for g in ascension_list]
 
     print ''
     print '{:^40}'.format('[ Ascensions ]')
@@ -21,6 +21,7 @@ def process_ascensions(ascension_list, total_games):
 
     print '{:40} {:,}'.format('Total Games', total_games)
     print '{:30} {:>10} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
+    print "sum turns", sum(turns), len(turns)
     print '{:40} {:,}'.format('Average turns/ascension', (sum(turns)) / len(turns))
     print '{:40} {:,}'.format('Fastest Ascension', min(turns))
     print '{:40} {:,}'.format('Slowest Ascension', max(turns))

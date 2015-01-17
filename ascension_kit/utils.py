@@ -9,7 +9,7 @@ def seconds_to_days_hours_mins(seconds):
     return days, hours, minutes
 
 
-lookup_z = [round(1 / float(n), 5) for n in range(1, 100)]
+lookup_z = [round(1 / float(n), 5) for n in range(1, 200)]
 
 
 def timestamp_to_date(unix_timestamp):
