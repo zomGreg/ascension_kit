@@ -1,7 +1,7 @@
 # !/usr/bin/python
 import urllib2
 import bs4
-
+import sys
 
 def get_player_file(player_name):
     '''
@@ -33,8 +33,7 @@ def get_player_file(player_name):
     #
     #         handle.write(block)
 
-
-def process_html(player_file):
+def process_html(player_file, player_name):
     '''
     Processes the html file.
     :param player_file:
@@ -45,7 +44,11 @@ def process_html(player_file):
     # with open(player_file, 'rb') as html_file:
     # soup = bs4._soup(html_file.read())
 
-    games = soup.findAll('pre')[0].string.split('\n')
+    try:
+        games = soup.findAll('pre')[0].string.split('\n')
+    except IndexError:
+        print "No games found for %s. Maybe check spelling?" % player_name
+        sys.exit(99)
     for i in range(0, len(games) - 1):
         keys = [t.split('=')[0] for t in games[i].split(':')]
         values = [t.split('=')[1] for t in games[i].split(':')]
@@ -59,7 +62,6 @@ def process_html(player_file):
             ascension_games.append(all_games)
 
     return dates, scores, roles, ascension_games
-
 
 def html_to_xlog(player_file):
     '''

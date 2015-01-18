@@ -18,5 +18,6 @@ if __name__ == '__main__':
 
         player_file = nao.get_player_file(cmd_args.name)
 
-        dates, scores, roles, ascension_games = nao.process_html(player_file)
-        format.process_ascensions(ascension_games, len(dates))
+        dates, scores, roles, ascension_games = nao.process_html(player_file, cmd_args.name)
+
+        format.process_ascensions(ascension_games, len(dates), cmd_args.name)
