@@ -4,9 +4,11 @@ import utils
 import collections
 
 def process_ascensions(ascension_list, total_games, player_name):
+
     if len(ascension_list) == 0:
         print "No ascensions for %s. Total games: %s" %(player_name, total_games)
         sys.exit(99)
+
     roles = [str(g['role']) for g in ascension_list]
     race = [str(g['race']) for g in ascension_list]
     gender0 = [str(g['gender0']) for g in ascension_list]

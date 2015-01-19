@@ -49,6 +49,7 @@ def process_html(player_file, player_name):
     except IndexError:
         print "No games found for %s. Maybe check spelling?" % player_name
         sys.exit(99)
+
     for i in range(0, len(games) - 1):
         keys = [t.split('=')[0] for t in games[i].split(':')]
         values = [t.split('=')[1] for t in games[i].split(':')]
