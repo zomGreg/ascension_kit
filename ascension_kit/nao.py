@@ -7,6 +7,7 @@ def get_player_file(player_name):
     '''
     This function will save the associated player_name html file
     into the ./player_html directory.
+    # TODO accept a list of player names and download in threads.
     '''
 
     # player_name="zomgreg"
