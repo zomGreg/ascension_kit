@@ -23,24 +23,7 @@ def check_cache(player_name, refresh = False):
     else:
         return False
 
-def get_player_file(player_name):
-    '''
-    This function will save the associated player_name html file
-    # TODO accept a list of player names and download in threads.
-    # TODO cache files for a length of time so we aren't always hitting the server.
-    '''
-
-    if check_cache(player_name):
-        print "Using local cached file for %s" % (player_name)
-        print "Checking staleness"
-
-        if is_stale(player_name):
-            print "file is stale, downloading"
-        else:
-            print "file is still fresh."
-
-    sys.exit(0)
-
+def download_file(player_name):
     url = 'http://alt.org/nethack/player-all-xlog.php?player=%s' % (player_name)
     dir = './tmp/'
 
@@ -52,6 +35,28 @@ def get_player_file(player_name):
         f.write(html)
 
     return html
+
+def get_player_file(player_name):
+    '''
+    This function will save the associated player_name html file
+    # TODO accept a list of player names and download in threads.
+    # TODO cache files for a length of time so we aren't always hitting the server.
+    '''
+
+    if check_cache(player_name):
+        print "Using local cached file for %s" % (player_name)
+        file = './tmp/'+player_name+'.html'
+
+        if not is_stale(player_name):
+            print "file is still fresh."
+        else:
+            print "file is stale, downloading"
+    else:
+        download_file(player_name)
+        file = './tmp/'+player_name+'.html'
+
+    return file
+
 
     # with open(dir + player_name + '.html', 'wb') as handle:
     #     response = requests.get(url, stream=True)
@@ -73,7 +78,8 @@ def process_html(player_file, player_name):
     :return: lists of things
     '''
     dates, scores, roles, ascension_games = [], [], [], []
-    soup = bs4._soup(player_file)
+    with open(player_file, 'r') as file:
+        soup = bs4._soup(file)
     # with open(player_file, 'rb') as html_file:
     # soup = bs4._soup(html_file.read())
 
