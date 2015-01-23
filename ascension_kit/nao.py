@@ -14,7 +14,7 @@ def is_stale(player_name):
     else:
         return False
 
-def check_cache(player_name, refresh = False):
+def check_cache(player_name):
 
     file = './tmp/'+player_name+'.html'
 
@@ -44,32 +44,18 @@ def get_player_file(player_name):
     '''
 
     if check_cache(player_name):
-        print "Using local cached file for %s" % (player_name)
         file = './tmp/'+player_name+'.html'
 
         if not is_stale(player_name):
-            print "file is still fresh."
+            print "File is still fresh. Using local cached file for %s." % (player_name)
         else:
             print "file is stale, downloading"
     else:
+        print "No cache found, downloading."
         download_file(player_name)
         file = './tmp/'+player_name+'.html'
 
     return file
-
-
-    # with open(dir + player_name + '.html', 'wb') as handle:
-    #     response = requests.get(url, stream=True)
-    #
-    #     if not response.ok:
-    #         print "OMGWTF I'm outta here."
-    #         sys.exit(99)
-    #
-    #     for block in response.iter_content(1024):
-    #         if not block:
-    #             break
-    #
-    #         handle.write(block)
 
 def process_html(player_file, player_name):
     '''
