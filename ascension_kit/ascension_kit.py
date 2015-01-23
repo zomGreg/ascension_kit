@@ -13,7 +13,8 @@ if __name__ == '__main__':
 
     if cmd_args.list:
         player_list = [p.strip() for p in cmd_args.list.split(',')]
-        sys.exit(8)
+        print player_list
+        sys.exit(9)
     if not cmd_args.name:
         parser.print_help()
     else:
