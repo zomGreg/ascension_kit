@@ -11,18 +11,16 @@ if __name__ == '__main__':
     parser.add_argument('--list', '-l', help='NAO user list')
     cmd_args = parser.parse_args()
 
-    if cmd_args.list:
-        player_list = [p.strip() for p in cmd_args.list.split(',')]
-        print player_list
-        sys.exit(9)
-    if not cmd_args.name:
+    if not cmd_args.list and not cmd_args.name:
         parser.print_help()
+    elif cmd_args.list:
+        player_list = [p.strip() for p in cmd_args.list.split(',')]
     else:
         player_list = [cmd_args.name.strip()]
-        print "Fetching games for user %s" % cmd_args.name
+    print "Fetching games for user(s) %s" % cmd_args.list.split(',')
 
-        player_file = nao.get_player_file(cmd_args.name)
+    for player in player_list:
 
-        dates, scores, roles, ascension_games = nao.process_html(player_file, cmd_args.name)
+        dates, scores, roles, ascension_games = nao.process_html(player)
 
         format.process_ascensions(ascension_games, len(dates), cmd_args.name)

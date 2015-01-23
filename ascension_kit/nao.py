@@ -44,7 +44,6 @@ def get_player_file(player_list):
     '''
 
     for p in player_list.split(','):
-        print p
 
         if check_cache(p):
             file = './tmp/'+p+'.html'
@@ -60,22 +59,21 @@ def get_player_file(player_list):
 
     return file
 
-def process_html(player_file, player_name):
+def process_html(player_file):
     '''
-    Processes the html file.
+    Processes the html file(s) of the users
     :param player_file:
     :return: lists of things
     '''
     dates, scores, roles, ascension_games = [], [], [], []
-    with open(player_file, 'r') as file:
+    with open('./tmp/'+player_file+'.html', 'r') as file:
         soup = bs4._soup(file)
-    # with open(player_file, 'rb') as html_file:
-    # soup = bs4._soup(html_file.read())
 
     try:
         games = soup.findAll('pre')[0].string.split('\n')
     except IndexError:
-        print "No games found for %s. Maybe check spelling?" % player_name
+        print "No games found for user %s. Maybe check spelling?" % os.path.basename(player_file).split('.')[0]
+        os.remove(player_file)
         sys.exit(99)
 
     for i in range(0, len(games) - 1):

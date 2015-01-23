@@ -2,6 +2,7 @@ from sets import Set
 import sys
 import utils
 import collections
+from prettytable import PrettyTable
 
 def process_ascensions(ascension_list, total_games, player_name):
 
@@ -21,6 +22,7 @@ def process_ascensions(ascension_list, total_games, player_name):
     maxlvl = [int(g['maxlvl']) for g in ascension_list]
     realtime = [int(g['realtime']) if g['realtime'] else 0 for g in ascension_list]
 
+    table = PrettyTable(["Player", "Ascensions"])
     print ''
     print '{:^40}'.format('[ Ascensions ]')
     print ''
