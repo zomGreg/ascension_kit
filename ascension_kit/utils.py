@@ -41,7 +41,6 @@ def timestamp_to_time(unix_timestamp):
     value = datetime.datetime.fromtimestamp(unix_timestamp)
     return value.strftime('%H:%M:%S')
 
-
 def days_between_dates(first, second):
     '''
     returns an int of the number of days between two dates

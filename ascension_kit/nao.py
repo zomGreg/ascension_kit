@@ -2,22 +2,54 @@
 import urllib2
 import bs4
 import sys
+import os, time
+import utils
+
+def is_stale(player_name):
+    file = './tmp/'+player_name+'.html'
+    file_age = time.time() - os.path.getmtime(file)
+
+    if file_age > 86400:
+        return True
+    else:
+        return False
+
+def check_cache(player_name, refresh = False):
+
+    file = './tmp/'+player_name+'.html'
+
+    if os.path.isfile(file):
+        return True
+    else:
+        return False
 
 def get_player_file(player_name):
     '''
     This function will save the associated player_name html file
-    into the ./player_html directory.
     # TODO accept a list of player names and download in threads.
+    # TODO cache files for a length of time so we aren't always hitting the server.
     '''
 
-    # player_name="zomgreg"
+    if check_cache(player_name):
+        print "Using local cached file for %s" % (player_name)
+        print "Checking staleness"
+
+        if is_stale(player_name):
+            print "file is stale, downloading"
+        else:
+            print "file is still fresh."
+
+    sys.exit(0)
 
     url = 'http://alt.org/nethack/player-all-xlog.php?player=%s' % (player_name)
-    dir = './player_files/'
+    dir = './tmp/'
 
     response = urllib2.urlopen(url)
 
     html = response.read()
+
+    with open(dir+player_name+'.html', 'wb') as f:
+        f.write(html)
 
     return html
 
