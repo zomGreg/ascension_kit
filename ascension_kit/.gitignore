@@ -1,4 +1,5 @@
 .idea/*
+tmp/*.html
 nao.db
 data/game_list.txt
 *.pyc
