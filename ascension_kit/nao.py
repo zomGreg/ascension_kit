@@ -36,24 +36,27 @@ def download_file(player_name):
 
     return html
 
-def get_player_file(player_name):
+def get_player_file(player_list):
     '''
     This function will save the associated player_name html file
     # TODO accept a list of player names and download in threads.
     # TODO cache files for a length of time so we aren't always hitting the server.
     '''
 
-    if check_cache(player_name):
-        file = './tmp/'+player_name+'.html'
+    for p in player_list.split(','):
+        print p
 
-        if not is_stale(player_name):
-            print "File is still fresh. Using local cached file for %s." % (player_name)
+        if check_cache(p):
+            file = './tmp/'+p+'.html'
+
+            if not is_stale(p):
+                print "File is still fresh. Using local cached file for %s." % (p)
+            else:
+                print "file is stale, downloading"
         else:
-            print "file is stale, downloading"
-    else:
-        print "No cache found, downloading."
-        download_file(player_name)
-        file = './tmp/'+player_name+'.html'
+            print "No cache found, downloading."
+            download_file(p)
+            file = './tmp/'+p+'.html'
 
     return file
 
