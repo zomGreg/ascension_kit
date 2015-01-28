@@ -73,7 +73,7 @@ def process_html(player_file):
         games = soup.findAll('pre')[0].string.split('\n')
     except IndexError:
         print "No games found for user %s. Maybe check spelling?" % os.path.basename(player_file).split('.')[0]
-        os.remove(player_file)
+        os.remove('./tmp/'+player_file+'.html')
         sys.exit(99)
 
     for i in range(0, len(games) - 1):

@@ -23,6 +23,7 @@ def process_ascensions(ascension_list, total_games, player_name):
     realtime = [int(g['realtime']) if g['realtime'] else 0 for g in ascension_list]
 
     table = PrettyTable(["Player", "Ascensions"])
+
     print ''
     print '{:^40}'.format('[ Ascensions ]')
     print ''
@@ -40,6 +41,17 @@ def process_ascensions(ascension_list, total_games, player_name):
     print '{:40} {:,}'.format('Average Points/Ascension', (sum(points)) / (len(points)))
     dhm = utils.seconds_to_days_hours_mins(sum(realtime))
     print '{:40} {} days {} hours {} minutes'.format('Time Spent Ascending', dhm[0], dhm[1], dhm[2])
+
+
+    table = PrettyTable(['Player', 'Total Games', 'Ascensions', 'Average Turns', 'Fastest',
+                         'Slowest', 'Total Turns', 'Total Points', 'Average Points', 'Time Spent'])
+
+    table.add_row([player_name, total_games, str(len(points))+' '+ str(round((float(len(points)) / float(total_games)),5)*100)+' %',
+                   sum(turns) / len(turns), min(turns), max(turns), sum(turns),
+                   sum(points), (sum(points)) / (len(points)), str(dhm[0])+'d '+str(dhm[1])+'h '+str(dhm[2])+'m '])
+
+    table.align = 'l'
+    print(table)
 
 #    print ''
 #    print 'Ascended Roles'
