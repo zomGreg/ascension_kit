@@ -4,6 +4,9 @@ import utils
 import collections
 from prettytable import PrettyTable
 
+table = PrettyTable(['Player', 'Total Games', 'Ascensions', 'Average Turns', 'Fastest',
+                     'Slowest', 'Total Turns', 'Total Points', 'Average Points', 'Time Spent'])
+
 def process_ascensions(ascension_list, total_games, player_name):
 
     if len(ascension_list) == 0:
@@ -22,29 +25,25 @@ def process_ascensions(ascension_list, total_games, player_name):
     maxlvl = [int(g['maxlvl']) for g in ascension_list]
     realtime = [int(g['realtime']) if g['realtime'] else 0 for g in ascension_list]
 
-    table = PrettyTable(["Player", "Ascensions"])
+    # print ''
+    # print '{:^40}'.format('[ Ascensions ]')
+    # print ''
+    #
+    # print '{:40} {:,}'.format('Total Games', total_games)
+    # #print '{:30} {:>10} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
+    # print '{:40} {:,} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
+    # print '{:40} {:,}'.format('Average turns/ascension', (sum(turns)) / len(turns))
+    # print '{:40} {:,}'.format('Fastest Ascension', min(turns))
+    # print '{:40} {:,}'.format('Slowest Ascension', max(turns))
+    # print ''
+    # print '{:40} {:,}'.format('Total Ascension Turns', sum(turns))
+    # print ''
+    # print '{:40} {:,}'.format('Total Points', sum(points))
+    # print '{:40} {:,}'.format('Average Points/Ascension', (sum(points)) / (len(points)))
+    # print '{:40} {} days {} hours {} minutes'.format('Time Spent Ascending', dhm[0], dhm[1], dhm[2])
 
-    print ''
-    print '{:^40}'.format('[ Ascensions ]')
-    print ''
 
-    print '{:40} {:,}'.format('Total Games', total_games)
-    #print '{:30} {:>10} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
-    print '{:40} {:,} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
-    print '{:40} {:,}'.format('Average turns/ascension', (sum(turns)) / len(turns))
-    print '{:40} {:,}'.format('Fastest Ascension', min(turns))
-    print '{:40} {:,}'.format('Slowest Ascension', max(turns))
-    print ''
-    print '{:40} {:,}'.format('Total Ascension Turns', sum(turns))
-    print ''
-    print '{:40} {:,}'.format('Total Points', sum(points))
-    print '{:40} {:,}'.format('Average Points/Ascension', (sum(points)) / (len(points)))
     dhm = utils.seconds_to_days_hours_mins(sum(realtime))
-    print '{:40} {} days {} hours {} minutes'.format('Time Spent Ascending', dhm[0], dhm[1], dhm[2])
-
-
-    table = PrettyTable(['Player', 'Total Games', 'Ascensions', 'Average Turns', 'Fastest',
-                         'Slowest', 'Total Turns', 'Total Points', 'Average Points', 'Time Spent'])
 
     table.add_row([player_name, total_games, str(len(points))+' '+ str(round((float(len(points)) / float(total_games)),5)*100)+' %',
                    sum(turns) / len(turns), min(turns), max(turns), sum(turns),

@@ -65,7 +65,8 @@ def process_html(player_file):
     :param player_file:
     :return: lists of things
     '''
-    dates, scores, roles, ascension_games = [], [], [], []
+    player_name, dates, scores, roles, ascension_games = [], [], [], [], []
+    player_games = {}
     with open('./tmp/'+player_file+'.html', 'r') as file:
         soup = bs4._soup(file)
 
