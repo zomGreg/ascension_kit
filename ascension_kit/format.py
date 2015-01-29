@@ -49,7 +49,7 @@ def process_ascensions(ascension_list, total_games, player_name):
                    sum(turns) / len(turns), min(turns), max(turns), sum(turns),
                    sum(points), (sum(points)) / (len(points)), str(dhm[0])+'d '+str(dhm[1])+'h '+str(dhm[2])+'m '])
 
-    table.align = 'l'
+    table.align = 'r'
     print(table)
 
 #    print ''
