@@ -54,7 +54,7 @@ def get_player_file(player_list):
                 print "file is stale, downloading xlog for %s." % (p)
                 download_file(file)
         else:
-            print "No cache found, downloading."
+            print "No cache found for %s, downloading." % (p)
             download_file(file)
 
     return file
