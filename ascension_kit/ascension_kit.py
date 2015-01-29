@@ -1,6 +1,6 @@
 import nao, format
 import argparse
-import sys
+import os
 
 if __name__ == '__main__':
     # TODO make saving the file optional
@@ -17,10 +17,17 @@ if __name__ == '__main__':
     print "Fetching games for user(s) %s" % cmd_args.list.split(',')
 
     players = [nao.get_player_file(p) for p in player_list]
-    #print players
 
+    player_dict={}
     for p in players:
 
         dates, scores, roles, ascension_games = nao.process_html(p)
+        player_data={}
+        player_data['dates'] = dates
+        player_data['scores'] = scores
+        player_data['roles'] = roles
+        player_data['ascension_games'] = ascension_games
+        player_dict[os.path.basename(p).split('.')[0]] = player_data
 
+    print len(player_dict)
     #format.process_ascensions(ascension_games, len(dates), player)
