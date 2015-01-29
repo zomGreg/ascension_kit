@@ -24,7 +24,6 @@ def check_cache(player_name):
 
 def download_file(player_name):
     url = 'http://alt.org/nethack/player-all-xlog.php?player=%s' % (os.path.basename(player_name).split('.')[0])
-    #dir = './tmp/'
 
     response = urllib2.urlopen(url)
 
