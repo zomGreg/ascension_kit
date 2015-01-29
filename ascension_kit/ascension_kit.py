@@ -29,5 +29,5 @@ if __name__ == '__main__':
         player_data['ascension_games'] = ascension_games
         player_dict[os.path.basename(p).split('.')[0]] = player_data
 
-    print len(player_dict)
     #format.process_ascensions(ascension_games, len(dates), player)
+    format.process_ascensions(player_dict)
