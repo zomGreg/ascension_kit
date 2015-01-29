@@ -16,10 +16,11 @@ if __name__ == '__main__':
         player_list = [p.strip() for p in cmd_args.list.split(',')]
     print "Fetching games for user(s) %s" % cmd_args.list.split(',')
 
-
     players = [nao.get_player_file(p) for p in player_list]
-    sys.exit(9)
+    #print players
 
-    dates, scores, roles, ascension_games = nao.process_html(player)
+    for p in players:
 
-    format.process_ascensions(ascension_games, len(dates), player)
+        dates, scores, roles, ascension_games = nao.process_html(p)
+
+    #format.process_ascensions(ascension_games, len(dates), player)

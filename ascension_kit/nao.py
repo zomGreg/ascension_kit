@@ -51,10 +51,10 @@ def get_player_file(player_list):
             if not is_stale(p):
                 print "File is still fresh. Using local cached file for %s." % (p)
             else:
-                print "file is stale, downloading"
+                print "file is stale, downloading xlog for %s." % (p)
+                download_file(p)
         else:
             print "No cache found, downloading."
-            download_file(p)
             file = './tmp/'+p+'.html'
 
     return file
@@ -67,14 +67,14 @@ def process_html(player_file):
     '''
     player_name, dates, scores, roles, ascension_games = [], [], [], [], []
     player_games = {}
-    with open('./tmp/'+player_file+'.html', 'r') as file:
+    with open(player_file, 'r') as file:
         soup = bs4._soup(file)
 
     try:
         games = soup.findAll('pre')[0].string.split('\n')
     except IndexError:
         print "No games found for user %s. Maybe check spelling?" % os.path.basename(player_file).split('.')[0]
-        os.remove('./tmp/'+player_file+'.html')
+        os.remove(player_file)
         sys.exit(99)
 
     for i in range(0, len(games) - 1):
