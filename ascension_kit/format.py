@@ -7,11 +7,12 @@ from prettytable import PrettyTable
 table = PrettyTable(['Player', 'Total Games', 'Ascensions', 'Average Turns', 'Fastest',
                      'Slowest', 'Total Turns', 'Total Points', 'Average Points', 'Time Spent'])
 
-def process_ascensions(ascension_list, total_games, player_name):
+def process_ascensions(player_dict):
 
-    if len(ascension_list) == 0:
-        print "No ascensions for %s. Total games: %s" %(player_name, total_games)
-        sys.exit(99)
+    for p in player_dict:
+        if len(player_dict[p]['ascension_games']) == 0:
+            print "No ascensions for %s. Total games: %s" %(p, len(player_dict[p]['dates']))
+            sys.exit(99)
 
     roles = [str(g['role']) for g in ascension_list]
     race = [str(g['race']) for g in ascension_list]

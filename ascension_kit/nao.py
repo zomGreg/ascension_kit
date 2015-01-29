@@ -6,8 +6,7 @@ import os, time
 import utils
 
 def is_stale(player_name):
-    file = './tmp/'+player_name+'.html'
-    file_age = time.time() - os.path.getmtime(file)
+    file_age = time.time() - os.path.getmtime(player_name)
 
     if file_age > 86400:
         return True
@@ -16,7 +15,7 @@ def is_stale(player_name):
 
 def check_cache(player_name):
 
-    file = './tmp/'+player_name+'.html'
+    file = player_name
 
     if os.path.isfile(file):
         return True
@@ -24,19 +23,20 @@ def check_cache(player_name):
         return False
 
 def download_file(player_name):
-    url = 'http://alt.org/nethack/player-all-xlog.php?player=%s' % (player_name)
-    dir = './tmp/'
+    url = 'http://alt.org/nethack/player-all-xlog.php?player=%s' % (os.path.basename(player_name).split('.')[0])
+    #dir = './tmp/'
 
     response = urllib2.urlopen(url)
 
     html = response.read()
 
-    with open(dir+player_name+'.html', 'wb') as f:
+    with open(player_name, 'wb') as f:
         f.write(html)
 
     return html
 
 def get_player_file(player_list):
+
     '''
     This function will save the associated player_name html file
     # TODO accept a list of player names and download in threads.
@@ -45,17 +45,18 @@ def get_player_file(player_list):
 
     for p in player_list.split(','):
 
-        if check_cache(p):
-            file = './tmp/'+p+'.html'
+        file = './tmp/'+p+'.html'
 
-            if not is_stale(p):
+        if check_cache(file):
+
+            if not is_stale(file):
                 print "File is still fresh. Using local cached file for %s." % (p)
             else:
                 print "file is stale, downloading xlog for %s." % (p)
-                download_file(p)
+                download_file(file)
         else:
             print "No cache found, downloading."
-            file = './tmp/'+p+'.html'
+            download_file(file)
 
     return file
 
@@ -69,7 +70,6 @@ def process_html(player_file):
     player_games = {}
     with open(player_file, 'r') as file:
         soup = bs4._soup(file)
-
     try:
         games = soup.findAll('pre')[0].string.split('\n')
     except IndexError:
