@@ -30,20 +30,20 @@ def process_ascensions(player_dict):
 
         if len(player_dict) == 1:
             print ''
-            print '{:^40}'.format('[ Ascensions ]')
+            print '{:^30}'.format('[ Ascensions ]')
             print ''
-            print '{:40} {:,}'.format('Total Games', total_games)
+            print '{:30} {:,}'.format('Total Games', total_games)
             #print '{:30} {:>10} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
-            print '{:40} {:,} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
-            print '{:40} {:,}'.format('Average turns/ascension', (sum(turns)) / len(turns))
-            print '{:40} {:,}'.format('Fastest Ascension', min(turns))
-            print '{:40} {:,}'.format('Slowest Ascension', max(turns))
+            print '{:30} {:,} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
+            print '{:30} {:,}'.format('Avg. turns/ascension', (sum(turns)) / len(turns))
+            print '{:30} {:,}'.format('Fastest Ascension', min(turns))
+            print '{:30} {:,}'.format('Slowest Ascension', max(turns))
             print ''
-            print '{:40} {:,}'.format('Total Ascension Turns', sum(turns))
+            print '{:30} {:,}'.format('Total Ascension Turns', sum(turns))
             print ''
-            print '{:40} {:,}'.format('Total Points', sum(points))
-            print '{:40} {:,}'.format('Average Points/Ascension', (sum(points)) / (len(points)))
-            print '{:40} {} days {} hours {} minutes'.format('Time Spent Ascending', dhm[0], dhm[1], dhm[2])
+            print '{:30} {:,}'.format('Total Points', sum(points))
+            print '{:30} {:,}'.format('Avg. Points/Ascension', (sum(points)) / (len(points)))
+            print '{:30} {} days {} hours {} minutes'.format('Time Spent Ascending', dhm[0], dhm[1], dhm[2])
             sys.exit(0)
 
         table.add_row([p, len(player_dict[p]['dates']),
