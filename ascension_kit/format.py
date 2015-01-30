@@ -25,34 +25,37 @@ def process_ascensions(player_dict):
         dates = [str(g['deathdate']) for g in player_dict[p]['ascension_games']]
         maxlvl = [int(g['maxlvl']) for g in player_dict[p]['ascension_games']]
         realtime = [int(g['realtime']) if g['realtime'] else 0 for g in player_dict[p]['ascension_games']]
-
-    # print ''
-    # print '{:^40}'.format('[ Ascensions ]')
-    # print ''
-    #
-    # print '{:40} {:,}'.format('Total Games', total_games)
-    # #print '{:30} {:>10} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
-    # print '{:40} {:,} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
-    # print '{:40} {:,}'.format('Average turns/ascension', (sum(turns)) / len(turns))
-    # print '{:40} {:,}'.format('Fastest Ascension', min(turns))
-    # print '{:40} {:,}'.format('Slowest Ascension', max(turns))
-    # print ''
-    # print '{:40} {:,}'.format('Total Ascension Turns', sum(turns))
-    # print ''
-    # print '{:40} {:,}'.format('Total Points', sum(points))
-    # print '{:40} {:,}'.format('Average Points/Ascension', (sum(points)) / (len(points)))
-    # print '{:40} {} days {} hours {} minutes'.format('Time Spent Ascending', dhm[0], dhm[1], dhm[2])
-
-
+        total_games = len(player_dict[p]['dates'])
         dhm = utils.seconds_to_days_hours_mins(sum(realtime))
 
+        if len(player_dict) == 1:
+            print ''
+            print '{:^40}'.format('[ Ascensions ]')
+            print ''
+            print '{:40} {:,}'.format('Total Games', total_games)
+            #print '{:30} {:>10} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
+            print '{:40} {:,} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
+            print '{:40} {:,}'.format('Average turns/ascension', (sum(turns)) / len(turns))
+            print '{:40} {:,}'.format('Fastest Ascension', min(turns))
+            print '{:40} {:,}'.format('Slowest Ascension', max(turns))
+            print ''
+            print '{:40} {:,}'.format('Total Ascension Turns', sum(turns))
+            print ''
+            print '{:40} {:,}'.format('Total Points', sum(points))
+            print '{:40} {:,}'.format('Average Points/Ascension', (sum(points)) / (len(points)))
+            print '{:40} {} days {} hours {} minutes'.format('Time Spent Ascending', dhm[0], dhm[1], dhm[2])
+            sys.exit(0)
+
         table.add_row([p, len(player_dict[p]['dates']),
-                       str(len(points)),str(round((float(len(points)) / float(len(player_dict[p]['dates']))),5)*100)+' %',
+                       int(len(points)),str(round((float(len(points)) / float(len(player_dict[p]['dates']))),5)*100)+' %',
                        sum(turns) / len(turns), min(turns), max(turns), sum(turns),
                        sum(points), (sum(points)) / (len(points)), str(dhm[0])+'d '+str(dhm[1])+'h '+str(dhm[2])+'m '])
 
         table.align = 'r'
-    print(table)
+        #print x.get_string(sortby="Annual Rainfall", reversesort=True)
+
+    table.sortby = 'Avg. Turns'
+    print table
 
 #    print ''
 #    print 'Ascended Roles'
