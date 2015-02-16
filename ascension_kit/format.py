@@ -52,7 +52,6 @@ def process_ascensions(player_dict):
                        sum(points), (sum(points)) / (len(points)), str(dhm[0])+'d '+str(dhm[1])+'h '+str(dhm[2])+'m '])
 
         table.align = 'r'
-        #print x.get_string(sortby="Annual Rainfall", reversesort=True)
 
     table.sortby = 'Avg. Turns'
     print table
