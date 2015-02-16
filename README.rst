@@ -74,6 +74,10 @@ Multi-User Comparison
    |  zomgreg |         355 |         34 |  9.577 % |      58479 |   33107 |  123889 |     1988301 |    119550072 |     3516178 |   26d 7h 38m  |
    +----------+-------------+------------+----------+------------+---------+---------+-------------+--------------+-------------+---------------+
 
+The results are ordered by Average Turns/Ascension (column 5).
+
+In cases where turns cannot easily be counted/parsed, I defaulted to 0.
+
 What's Next, Then?
 ------------------
 
