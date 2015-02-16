@@ -76,6 +76,8 @@ Multi-User Comparison
 
 The results are ordered by Average Turns/Ascension (column 5).
 
+Player files are cached locally for a day to prevent hitting the server too much.
+
 In cases where turns cannot easily be counted/parsed, I defaulted to 0.
 
 What's Next, Then?
