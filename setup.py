@@ -9,21 +9,22 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-packages = ['ascension_kit']
+requires = ['requests>=1.0.4', 'beautifulsoup4>=4.3.2', 'prettytable==0.7.2']
 
-requires = ['requests>=1.0.4', 'beautifulsoup4>=4.3.2']
 setup(
     name="ascension_kit",
-    version="0.0.2",
+    version='0.0.8',
     author="Greg Moselle",
     author_email="zomgreg+ascensionkit@gmail.com",
     description="A utility to report ascension information from NAO.",
     license="BSD",
+    scripts=['bin/ascension-kit'],
     keywords="python nethack utility",
     url="http://packages.python.org/ascension_kit",
     packages=['ascension_kit'],
     long_description=read('README'),
     include_package_data=True,
+    install_requires=requires,
     zip_safe=False,
     classifiers=[
         "Development Status :: 3 - Alpha",

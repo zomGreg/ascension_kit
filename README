@@ -8,17 +8,50 @@ What is this?
 
 Ascension Kit is a project I hacked together to show ascension details from the NAO player files.
 
+How do I get it?
+----------------
+
+pip
+^^^
+
+.. code-block:: bash
+
+   pip install ascension_kit
+
+easy_install
+^^^^^^^^^^^^
+
+.. code-block:: bash
+
+   easy_install ascension_kit
+
+I recommend working in a virtual environment, if you have that option, so something like:
+
+.. code-block:: bash
+
+   ➜  venv  virtualenv --no-site-packages ak
+
+   New python executable in ak/bin/python2.7
+   Also creating executable in ak/bin/python
+   Installing setuptools, pip...done.
+   
+   ➜  ak  activate
+   
+   (ak)➜  ak  pip install ascension_kit
+
+
 What does it do?
 ----------------
 
-I'm glad you asked. It displays information about player ascensions, and will return a table of user data if multiple user names are passed.
+I'm glad you asked. It displays information about player ascensions, and will
+return a table of user data if multiple user names are passed.
 
 Single User
 ^^^^^^^^^^^
 
-.. code-block:: bash
+.. code-block:: text
 
-   $ python ascension_kit/ascension_kit.py -l zomgreg
+   ascension-kit -l zomgreg
 
    Fetching games for user(s) ['zomgreg']
    File is still fresh. Using local cached file for zomgreg.
@@ -42,9 +75,9 @@ Multiple Users
 
 The format for a multiple user call is a table.
 
-.. code-block:: bash
+.. code-block:: text
 
-   $ python ascension_kit/ascension_kit.py -l zomgreg,bose,stth,anselmus,stenno,raisse,rschaff
+   ascension-kit -l zomgreg,bose,stth,anselmus,stenno,raisse,rschaff
 
    Fetching games for user(s) ['zomgreg', 'bose', 'stth', 'anselmus', 'stenno', 'raisse', 'rschaff']
    File is still fresh. Using local cached file for zomgreg.

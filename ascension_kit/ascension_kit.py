@@ -1,9 +1,11 @@
+#!/usr/bin/env python
 import nao
 import format
 import argparse
 import os
 
-if __name__ == '__main__':
+
+def main():
     # TODO make saving the file optional
     # TODO make a pretty table
     """ Fetches a users NAO data"""
@@ -31,3 +33,7 @@ if __name__ == '__main__':
         player_dict[os.path.basename(p).split('.')[0]] = player_data
 
     format.process_ascensions(player_dict)
+
+
+if __name__ == '__main__':
+    main()
