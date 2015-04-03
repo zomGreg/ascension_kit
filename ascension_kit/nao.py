@@ -2,8 +2,8 @@
 import urllib2
 import bs4
 import sys
-import os, time
-import utils
+import os
+import time
 
 def is_stale(player_name):
     file_age = time.time() - os.path.getmtime(player_name)
@@ -44,7 +44,7 @@ def get_player_file(player_list):
 
     for p in player_list.split(','):
 
-        file = './tmp/'+p+'.html'
+        file = '/tmp/'+p+'.html'
 
         if check_cache(file):
 
@@ -89,24 +89,3 @@ def process_html(player_file):
             ascension_games.append(all_games)
 
     return dates, scores, roles, ascension_games
-
-def html_to_xlog(player_file):
-    '''
-    Not currently used.
-
-    takes in an html file and produces an xlog file without any
-    of the html tags
-    :param player_file:
-    :return:
-    '''
-    with open(player_file, 'rb') as html_file:
-        soup = bs4._soup(html_file.read())
-
-        games = soup.findAll('pre')[0].string.split('\n')
-
-        # Write to file
-        player_name = os.path.splitext(os.path.basename(player_file))[0]
-        with open('./xlog/' + player_name + '.xlog', 'wb') as player_xlog:
-            for game in games:
-                if game:
-                    player_xlog.write(game + "\n")

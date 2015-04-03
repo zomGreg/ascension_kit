@@ -1,11 +1,10 @@
-from sets import Set
 import sys
 import utils
-import collections
 from prettytable import PrettyTable
 
 table = PrettyTable(['Player', 'Total Games', 'Ascensions', 'Pct', 'Avg. Turns', 'Fastest',
                      'Slowest', 'Total Turns', 'Total Points', 'Avg. Points', 'Time Spent'])
+
 
 def process_ascensions(player_dict):
 
@@ -33,7 +32,6 @@ def process_ascensions(player_dict):
             print '{:^40}'.format('[ Ascensions ]')
             print ''
             print '{:40} {:,}'.format('Total Games', total_games)
-            #print '{:30} {:>10} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
             print '{:40} {:,} ({:.2%})'.format('Ascensions', len(points), float(len(points)) / float(total_games))
             print '{:40} {:,}'.format('Average turns/ascension', (sum(turns)) / len(turns))
             print '{:40} {:,}'.format('Fastest Ascension', min(turns))
@@ -52,7 +50,6 @@ def process_ascensions(player_dict):
                        sum(points), (sum(points)) / (len(points)), str(dhm[0])+'d '+str(dhm[1])+'h '+str(dhm[2])+'m '])
 
         table.align = 'r'
-        #print x.get_string(sortby="Annual Rainfall", reversesort=True)
 
     table.sortby = 'Avg. Turns'
     print table
