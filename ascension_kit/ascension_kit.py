@@ -19,9 +19,8 @@ if __name__ == '__main__':
 
     players = [nao.get_player_file(p) for p in player_list]
 
-    player_dict={}
+    player_dict = {}
     for p in players:
-
         dates, scores, roles, ascension_games = nao.process_html(p)
         player_data = dict()
         player_data['dates'] = dates

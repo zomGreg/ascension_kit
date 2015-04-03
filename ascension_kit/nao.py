@@ -5,6 +5,7 @@ import sys
 import os
 import time
 
+
 def is_stale(player_name):
     file_age = time.time() - os.path.getmtime(player_name)
 
@@ -13,14 +14,15 @@ def is_stale(player_name):
     else:
         return False
 
-def check_cache(player_name):
 
+def check_cache(player_name):
     file = player_name
 
     if os.path.isfile(file):
         return True
     else:
         return False
+
 
 def download_file(player_name):
     url = 'http://alt.org/nethack/player-all-xlog.php?player=%s' % (os.path.basename(player_name).split('.')[0])
@@ -34,8 +36,8 @@ def download_file(player_name):
 
     return html
 
-def get_player_file(player_list):
 
+def get_player_file(player_list):
     '''
     This function will save the associated player_name html file
     # TODO accept a list of player names and download in threads.
@@ -44,7 +46,7 @@ def get_player_file(player_list):
 
     for p in player_list.split(','):
 
-        file = '/tmp/'+p+'.html'
+        file = '/tmp/' + p + '.html'
 
         if check_cache(file):
 
@@ -58,6 +60,7 @@ def get_player_file(player_list):
             download_file(file)
 
     return file
+
 
 def process_html(player_file):
     '''
