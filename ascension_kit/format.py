@@ -54,20 +54,3 @@ def process_ascensions(player_dict):
 
     table.sortby = 'Avg. Turns'
     print table
-
-# print ''
-#    print 'Ascended Roles'
-#    roles_counter = collections.Counter(roles)
-#    roles_set = Set(roles)
-#
-#    rs, count = [], []
-#    z_total = 0
-#for role in roles_set:
-#    rs.append(role)
-#    count.append(roles_counter[role])
-#
-#        z_total = z_total + sum(utils.lookup_z[:roles_counter[role]])
-#        print '%s: %d %1.5f' % (role, roles_counter[role], sum(utils.lookup_z[:roles_counter[role]]))
-
-#    print ''
-#    print 'Z-score {:.8}'.format(z_total)
