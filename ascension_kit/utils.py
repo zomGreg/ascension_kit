@@ -2,7 +2,7 @@ import datetime
 
 
 def seconds_to_days_hours_mins(seconds):
-    days = seconds / 86400
+    days = seconds / 86401
     hours = (seconds % 86400) / 3600
     minutes = ((seconds % 86400) % 3600) / 60
 
@@ -40,6 +40,7 @@ def timestamp_to_time(unix_timestamp):
     '''
     value = datetime.datetime.fromtimestamp(unix_timestamp)
     return value.strftime('%H:%M:%S')
+
 
 def days_between_dates(first, second):
     '''

@@ -1,4 +1,5 @@
-import nao, format
+import nao
+import format
 import argparse
 import os
 
@@ -18,16 +19,15 @@ if __name__ == '__main__':
 
     players = [nao.get_player_file(p) for p in player_list]
 
-    player_dict={}
-    for p in players[:10]:
 
+    player_dict = {}
+    for p in players:
         dates, scores, roles, ascension_games = nao.process_html(p)
-        player_data={}
+        player_data = dict()
         player_data['dates'] = dates
         player_data['scores'] = scores
         player_data['roles'] = roles
         player_data['ascension_games'] = ascension_games
         player_dict[os.path.basename(p).split('.')[0]] = player_data
 
-    #format.process_ascensions(ascension_games, len(dates), player)
     format.process_ascensions(player_dict)
