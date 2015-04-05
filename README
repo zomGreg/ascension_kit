@@ -29,15 +29,15 @@ I recommend working in a virtual environment, if you have that option, so someth
 
 .. code-block:: bash
 
-   ➜  venv  virtualenv --no-site-packages ak
+   ➜  virtualenv --no-site-packages ak
 
    New python executable in ak/bin/python2.7
    Also creating executable in ak/bin/python
    Installing setuptools, pip...done.
    
-   ➜  ak  activate
+   ➜  activate
    
-   (ak)➜  ak  pip install ascension_kit
+   (ak)➜  pip install ascension_kit
 
 
 What does it do?
