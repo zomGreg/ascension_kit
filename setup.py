@@ -9,7 +9,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-requires = ['requests>=1.0.4', 'beautifulsoup4>=4.3.2', 'prettytable==0.7.2']
+requires = ['beautifulsoup4>=4.3.2', 'prettytable==0.7.2']
 
 setup(
     name="ascension_kit",
