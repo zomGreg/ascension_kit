@@ -22,7 +22,7 @@ setup(
     keywords="python nethack utility",
     url="http://packages.python.org/ascension_kit",
     packages=['ascension_kit'],
-    long_description=read('README'),
+    long_description=read('README.rst'),
     include_package_data=True,
     install_requires=requires,
     zip_safe=False,
