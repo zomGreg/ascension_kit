@@ -35,12 +35,7 @@ def process_ascensions(player_dict):
             print '{:30} {:,}'.format('Avg. turns/ascension', (sum(turns)) / len(turns))
             print '{:30} {:,}'.format('Fastest Ascension', min(turns))
             print '{:30} {:,}'.format('Slowest Ascension', max(turns))
-            print '{:30} {:,}'.format('Total Games', total_games)
 
-            print '{:30} {:,}'.format('Average turns/ascension', (sum(turns)) / len(turns))
-            print '{:30} {:,}'.format('Fastest Ascension', min(turns))
-            print '{:30} {:,}'.format('Slowest Ascension', max(turns))
-            print ''
             print '{:30} {:,}'.format('Total Ascension Turns', sum(turns))
             print ''
             print '{:30} {:,}'.format('Total Points', sum(points))
