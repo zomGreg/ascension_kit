@@ -9,20 +9,13 @@ import time
 def is_stale(player_name):
     file_age = time.time() - os.path.getmtime(player_name)
 
-    if file_age > 86400:
-        return True
-    else:
-        return False
+    return file_age > 86400
 
 
 def check_cache(player_name):
     file = player_name
 
-    if os.path.isfile(file):
-        return True
-    else:
-        return False
-
+    return os.path.isfile(file)
 
 def download_file(player_name):
     url = 'http://alt.org/nethack/player-all-xlog.php?player=%s' % (os.path.basename(player_name).split('.')[0])
