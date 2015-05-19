@@ -3,7 +3,8 @@ import nao
 import format
 import argparse
 import os
-
+import sys
+import __init__
 
 def main():
     # TODO make saving the file optional
@@ -11,9 +12,13 @@ def main():
     """ Fetches a users NAO data"""
     parser = argparse.ArgumentParser()
     parser.add_argument('--list', '-l', help='NAO user list')
+    parser.add_argument('--version', '-V', help='Prints version', action='store_true')
     cmd_args = parser.parse_args()
 
-    if not cmd_args.list:
+    if cmd_args.version:
+        print "Ascension Kit:", __init__.__version__
+        sys.exit(0)
+    elif not cmd_args.list:
         parser.print_help()
     elif cmd_args.list:
         player_list = [p.strip() for p in cmd_args.list.split(',')]
