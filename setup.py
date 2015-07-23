@@ -13,7 +13,7 @@ requires = ['beautifulsoup4>=4.3.2', 'prettytable==0.7.2']
 
 setup(
     name="ascension_kit",
-    version='0.0.13',
+    version='0.0.14',
     author="Greg Moselle",
     author_email="zomgreg+ascensionkit@gmail.com",
     description="A utility to report ascension information from NAO.",
