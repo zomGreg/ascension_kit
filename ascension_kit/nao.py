@@ -64,7 +64,7 @@ def process_html(player_file):
     player_name, dates, scores, roles, ascension_games = [], [], [], [], []
     player_games = {}
     with open(player_file, 'r') as file:
-        soup = bs4._soup(file)
+        soup = bs4._soup(file, "html.parser")
     try:
         games = soup.findAll('pre')[0].string.split('\n')
     except IndexError:
